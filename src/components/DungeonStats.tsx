@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getContract, fetchTotal, fetchUser } from '../contracts/ronkeblades';
+import { getContract, fetchTotal, fetchUser } from '../contracts/ronkebladesToken';
 import { useRoninWalletContext } from '../hooks/useRoninWallet';
 
 export default function DungeonStats() {

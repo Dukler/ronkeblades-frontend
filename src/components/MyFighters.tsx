@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Contract } from 'ethers';
 import { useRoninWalletContext } from '../hooks/useRoninWallet';
-import { FIGHTER_ADDRESS, ABI, fetchFighters } from '../contracts/ronkebladesFighter';
+import { FIGHTER_ADDRESS, ABI, fetchFighters, claimFighterRewards } from '../contracts/ronkebladesFighter';
+import { sendFighterToDungeon } from '../contracts/ronkebladesDungeon';
 
 export default function MyFighters() {
     const { provider, address, isConnected } = useRoninWalletContext();
@@ -25,7 +26,15 @@ export default function MyFighters() {
             <h2>Your Fighters</h2>
             <ul>
                 {fighters.map(id => (
-                    <li key={id}>Fighter #{id}</li>
+                    <>
+                        <li key={id}>Fighter #{id}</li>
+                        <button onClick={() => sendFighterToDungeon(provider, id)}>
+                            Send to Dungeon
+                        </button>
+                        <button onClick={() => claimFighterRewards(provider, id)}>
+                            Claim
+                        </button>
+                    </>
                 ))}
             </ul>
         </div>
