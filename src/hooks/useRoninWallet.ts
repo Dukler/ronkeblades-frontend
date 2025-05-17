@@ -5,20 +5,18 @@ import {
     ConnectorError,
     ConnectorErrorType,
     RoninWalletConnector,
-    // IConnector,
 } from '@sky-mavis/tanto-connect';
-import { BrowserProvider } from 'ethers';
+import { Web3Provider } from '@ethersproject/providers'; // ethers v5
 import { RoninWalletContext } from '../context';
 
 export function useRoninWallet() {
     const [connector, setConnector] = useState<RoninWalletConnector | null>(null);
     const [address, setAddress] = useState<string | null>(null);
-    const [provider, setProvider] = useState<BrowserProvider | null>(null);
+    const [provider, setProvider] = useState<Web3Provider | null>(null);
 
     useEffect(() => {
         requestRoninWalletConnector()
             .then(conn => {
-                if (!conn) return window.location.href = 'https://wallet.roninchain.com';
                 conn.on(ConnectorEvent.CONNECT, async () => {
                     const accts = await conn.getAccounts();
                     setAddress(accts[0]);
@@ -30,8 +28,10 @@ export function useRoninWallet() {
                 setConnector(conn);
             })
             .catch(err => {
-                if (err instanceof ConnectorError &&
-                    err.type === ConnectorErrorType.ConnectorNotFound) {
+                if (
+                    err instanceof ConnectorError &&
+                    err.code === ConnectorErrorType.ConnectorNotFound
+                ) {
                     window.location.href = 'https://wallet.roninchain.com';
                 }
             });
@@ -39,12 +39,13 @@ export function useRoninWallet() {
 
     const connect = async () => {
         if (!connector) return;
-        console.log('roninconected');
-
         const { provider: eth } = await connector.connect();
         const accts = await connector.getAccounts();
         setAddress(accts[0]);
-        if (eth) setProvider(new BrowserProvider(eth));
+        if (eth) {
+            const web3Provider = new Web3Provider(eth);
+            setProvider(web3Provider);
+        }
     };
 
     return { address, provider, connect, isConnected: !!address };
