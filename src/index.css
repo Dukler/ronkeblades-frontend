@@ -20,5 +20,66 @@ body {
     --color-border: #1e223a;
     --color-accent: #2c3150;
     --color-text-main: #d0d5e0;
-    --color-text-muted: #9ca3af; 
+    --color-text-muted: #9ca3af;
+}
+
+/* Background gradient to match the portal */
+body {
+    background: linear-gradient(135deg, #010106 0%, #000207 50%, #0a0e1a 100%);
+}
+
+/* Transparent cards with subtle gray-blue border and light effect */
+section,
+section .grid>div,
+section .absolute,
+footer span {
+    background-color: transparent;
+    border: 1px solid #1f2937;
+    /* Subtle gray-blue border */
+    box-shadow: 0 0 8px rgba(31, 41, 55, 0.2), 0 0 16px rgba(31, 41, 55, 0.1);
+    /* Light effect tied to the border */
+}
+
+/* Center images and ensure they fit */
+img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* Blend the portal image with the background */
+img[src="/images/portal.png"] {
+    mix-blend-mode: screen;
+    /* Blends the portal image with the background */
+    background: none;
+    /* Ensure no background interferes */
+}
+
+/* Ensure the portal's container doesn't interfere with blending */
+div:has(img[src="/images/portal.png"]) {
+    background: none;
+}
+
+/* Hover effect for cards */
+section .grid>div {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+section .grid>div:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 12px rgba(31, 41, 55, 0.4), 0 0 24px rgba(31, 41, 55, 0.2);
+    /* Enhanced light effect on hover */
+}
+
+/* Match the portal's container background to the website's background at that point */
+div:has(img[src="/images/portal.png"]) {
+    background: #000207;
+    /* Matches the midpoint of the website's gradient */
+}
+
+/* Remove mix-blend-mode if this approach works better */
+img[src="/images/portal.png"] {
+    mix-blend-mode: normal;
+    /* Reset blending */
+    background: none;
 }
