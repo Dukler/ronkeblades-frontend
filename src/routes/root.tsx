@@ -5,7 +5,7 @@ export const rootRoute = createRootRoute({
     component: function RootComponent() {
         const { address, connect, isConnected } = useRoninWalletContext();
         return (
-            <div className="p-4">
+            <div className="p-4 text-[var(--color-text-main)]">
                 <button onClick={connect} className="btn">
                     {isConnected ? address : 'Connect Ronin Wallet'}
                 </button>
