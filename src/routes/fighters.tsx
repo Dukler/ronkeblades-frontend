@@ -12,13 +12,14 @@ export default function Fighters() {
                 <h2 className="text-3xl font-bold mb-8 text-[var(--color-text-main)]">
                     Fighters
                 </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                {/* 2 per row on mobile, 3 per row on md+ */}
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
                     {fighters.map((f) => (
                         <div
                             key={f.name}
                             className="border border-[#1f2937] rounded-xl p-6 flex flex-col items-center text-center transition-transform card-light-effect card-light-effect-hover bg-transparent"
                         >
-                            <div className="w-40 h-40 flex items-center justify-center mb-4 bg-gray-800 rounded-xl">
+                            <div className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 flex items-center justify-center mb-4 bg-gray-800 rounded-xl">
                                 <span className="text-gray-400 text-sm">Placeholder: Ronke {f.name}</span>
                             </div>
                             <h3 className="text-xl font-semibold mb-2 text-[var(--color-text-main)]">
@@ -40,35 +41,6 @@ export default function Fighters() {
                     <p className="text-2xl font-semibold text-[var(--color-text-main)]">
                         1,250 RBT
                     </p>
-                </div>
-            </section>
-
-            {/* Dungeon Section */}
-            <section className="grid grid-cols-1 sm:grid-cols-2 gap-8 border border-[#1f2937] rounded-xl p-8 bg-transparent card-light-effect">
-                <div className="flex flex-col items-center text-center">
-                    <h3 className="text-2xl font-semibold mb-6 text-[var(--color-text-main)]">
-                        Select Fighter
-                    </h3>
-                    <div className="w-48 h-48 flex items-center justify-center bg-gray-800 rounded-xl">
-                        <span className="text-gray-400 text-sm">Placeholder: Ronke Rogue</span>
-                    </div>
-                </div>
-                <div className="flex flex-col items-center justify-center">
-                    <h3 className="text-2xl font-semibold mb-6 text-[var(--color-text-main)]">
-                        Enter Dungeon
-                    </h3>
-                    <div className="w-48 h-48 flex items-center justify-center mb-6 relative bg-[#000207]">
-                        <img
-                            src="/images/portal.png"
-                            alt="Dungeon Portal"
-                            className="max-w-full max-h-full rounded-xl object-contain"
-                        />
-                    </div>
-                    <button
-                        className="px-8 py-3 text-white rounded-xl border border-[var(--color-border)] hover:bg-blue-600 hover:border-blue-600 transition-colors bg-transparent text-[var(--color-text-main)]"
-                    >
-                        Send Fighters
-                    </button>
                 </div>
             </section>
 
