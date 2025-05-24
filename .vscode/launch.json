@@ -1,0 +1,21 @@
+{
+  "version": "0.2.0",
+  "compounds": [
+    {
+      "name": "Full Dapp Dev Environment",
+      "configurations": ["Vite React: Chrome (with server)"],
+      "preLaunchTask": "hardhat-node"
+    }
+  ],
+  "configurations": [
+    {
+      "type": "pwa-chrome",
+      "request": "launch",
+      "name": "Vite React: Chrome (with server)",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}/src",
+      "sourceMaps": true,
+      "preLaunchTask": "vite"
+    }
+  ]
+}
