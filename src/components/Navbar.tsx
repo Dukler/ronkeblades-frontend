@@ -11,8 +11,8 @@ export default function Navbar() {
     const { location } = useRouterState();
 
     return (
-        <nav className="w-full flex justify-center mb-8">
-            <div className="flex gap-2 bg-[#181c23] rounded-xl p-2 shadow-lg">
+        <nav className="w-full flex justify-center mb-2">
+            <div className="flex gap-2 shadow-lg">
                 {tabs.map(tab => {
                     const isActive = location.pathname === tab.path;
                     return (

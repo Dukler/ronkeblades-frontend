@@ -13,10 +13,14 @@ export default function MainLayout() {
                     {isConnected ? address : 'Connect Ronin Wallet'}
                 </button>
             </header>
-            <Navbar />
             <main className="flex-1 p-8">
                 <Outlet />
             </main>
+            <footer className="sticky bottom-0 left-0 w-full z-50 border-t border-zinc-800 bg-[var(--color-background)]">
+                <nav className="flex justify-around items-center max-w-md mx-auto py-2">
+                    <Navbar />
+                </nav>
+            </footer>
         </div>
     );
 }
