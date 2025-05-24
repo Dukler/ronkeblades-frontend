@@ -45,11 +45,11 @@ export default function Fighters() {
             </section>
 
             {/* Footer */}
-            <footer className="flex justify-end mt-6 text-sm">
+            {/* <footer className="flex justify-end mt-6 text-sm">
                 <span className="px-4 py-2 border border-[#1f2937] rounded-xl bg-transparent card-light-effect text-[var(--color-text-muted)]">
                     ron82ng...21a0
                 </span>
-            </footer>
+            </footer> */}
         </div>
     );
 }
