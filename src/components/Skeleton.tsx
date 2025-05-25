@@ -1,8 +1,18 @@
-import Navbar from '../components/Navbar';
 import { useRoninWalletContext } from '../hooks/useRoninWallet';
+import { useNavigate, useRouterState } from '@tanstack/react-router';
+import { useEffect } from 'react';
+import Navbar from '../components/Navbar';
 
 export default function Skeleton({ children }: { children: React.ReactNode }) {
     const { address, connect, isConnected } = useRoninWalletContext();
+    const navigate = useNavigate();
+    const { location } = useRouterState();
+
+    useEffect(() => {
+        if (!isConnected && location.pathname !== '/login') {
+            navigate({ to: '/login' });
+        }
+    }, [isConnected, location.pathname, navigate]);
 
     return (
         <div className="min-h-screen flex flex-col text-[var(--color-text-main)] font-['Chakra_Petch',sans-serif]">

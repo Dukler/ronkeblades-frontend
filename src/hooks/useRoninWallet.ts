@@ -35,6 +35,7 @@ export function useRoninWallet() {
                     conn.on(ConnectorEvent.DISCONNECT, () => {
                         setAddress(null);
                         setProvider(null);
+                        window.localStorage.removeItem('ronin:wallet:connected'); // <-- clear login flag
                     });
                     setConnector(conn);
                 })
@@ -61,6 +62,7 @@ export function useRoninWallet() {
             eth.on('disconnect', () => {
                 setAddress(null);
                 setProvider(null);
+                window.localStorage.removeItem('ronin:wallet:connected'); // <-- clear login flag
             });
         }
     }, []);
