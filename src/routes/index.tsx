@@ -1,20 +1,14 @@
 import { createRoute } from '@tanstack/react-router'
 import { rootRoute } from './root'
 import Fighters from './fighters'
-import Dungeon from './dungeon'
 import Inventory from './inventory'
 import Token from './token'
+import Login from './login'
 
 export const indexRoute = createRoute({
     path: '/',
     getParentRoute: () => rootRoute,
     component: Fighters,
-})
-
-export const dungeonRoute = createRoute({
-    path: '/dungeon',
-    getParentRoute: () => rootRoute,
-    component: Dungeon,
 })
 
 export const inventoryRoute = createRoute({
@@ -28,3 +22,9 @@ export const tokenRoute = createRoute({
     getParentRoute: () => rootRoute,
     component: Token,
 })
+
+export const loginRoute = createRoute({
+    path: '/login',
+    getParentRoute: () => rootRoute,
+    component: Login,
+});
